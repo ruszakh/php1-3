@@ -11,6 +11,8 @@
 
     <a href="/index.php">Назад</a>
 
+    <p>Обычный калькулятор</p>
+
     <form action="/calculator/compute.php" method="get">
 
         <input type="number" name="first" placeholder="Первое значение">
@@ -25,6 +27,66 @@
         <input type="number" name="second" placeholder="Второе значение">
         <br>
         <input type="submit" value="=">
+
+    </form>
+
+    <hr>
+
+    <p>Улучшенный калькулятор</p>
+
+    <?php
+
+    if ( isset($_GET['first'], $_GET['second'], $_GET['act'])) {
+        $firstNum = $_GET['first'];
+        $secondNum = $_GET['second'];
+        $act = $_GET['act'];
+    } else {
+        $firstNum = null;
+        $secondNum = null;
+        $act = null;
+    }
+
+    function calc($firstNum, $secondNum, $act) {
+        switch($act) {
+            case '+':
+                echo ($firstNum + $secondNum);
+                break;
+            case '-':
+                echo ($firstNum - $secondNum);
+                break;
+            case '*':
+                echo ($firstNum * $secondNum);
+                break;
+            case '/':
+                if ($secondNum != 0) {
+                    echo ($firstNum / $secondNum);
+                    break;
+                }
+                ?>На ноль делить нельзя!<?php
+                break;
+            default:
+                ?>Неизвестная операция<?php
+        }
+    }
+    ?>
+
+    <form action="/calculator/calc.php" method="get">
+
+        <input type="number" name="first" placeholder="Первое значение" value="<?php echo $firstNum; ?>">
+        <br>
+        <select name="act">
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select>
+        <br>
+        <input type="number" name="second" placeholder="Второе значение" value="<?php echo $secondNum; ?>">
+        <br>
+        <input type="submit" value="=">
+        <br>
+        <input type="text" placeholder="Результат" value="<?php echo calc($firstNum, $secondNum, $act); ?>">
+
     </form>
 
 </body>
