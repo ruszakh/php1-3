@@ -18,10 +18,10 @@
         <input type="number" name="first" placeholder="Первое значение">
         <br>
         <select name="act">
-            <option>+</option>
-            <option>-</option>
-            <option>*</option>
-            <option>/</option>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
         </select>
         <br>
         <input type="number" name="second" placeholder="Второе значение">
@@ -68,6 +68,11 @@
                 ?>Неизвестная операция<?php
         }
     }
+
+    assert(11 == calc(5, 6, '+'));
+    assert(4 == calc(7, 3, '-'));
+    assert(8 == calc(2, 4, '*'));
+    assert(3 == calc(15, 5, '/'));
     ?>
 
     <form action="/calculator/calc.php" method="get">
@@ -75,10 +80,10 @@
         <input type="number" name="first" placeholder="Первое значение" value="<?php echo $firstNum; ?>">
         <br>
         <select name="act">
-            <option>+</option>
-            <option>-</option>
-            <option>*</option>
-            <option>/</option>
+            <option value="+" <?php if ('+' == $act) { ?> selected <?php }; ?>> + </option>
+            <option value="-" <?php if ('-' == $act) { ?> selected <?php }; ?>> - </option>
+            <option value="*" <?php if ('*' == $act) { ?> selected <?php }; ?>> * </option>
+            <option value="/" <?php if ('/' == $act) { ?> selected <?php }; ?>> / </option>
         </select>
         <br>
         <input type="number" name="second" placeholder="Второе значение" value="<?php echo $secondNum; ?>">
