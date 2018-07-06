@@ -49,17 +49,17 @@
     function calc($firstNum, $secondNum, $act) {
         switch($act) {
             case '+':
-                echo ($firstNum + $secondNum);
+                return ($firstNum + $secondNum);
                 break;
             case '-':
-                echo ($firstNum - $secondNum);
+                return ($firstNum - $secondNum);
                 break;
             case '*':
-                echo ($firstNum * $secondNum);
+                return ($firstNum * $secondNum);
                 break;
             case '/':
                 if ($secondNum != 0) {
-                    echo ($firstNum / $secondNum);
+                    return ($firstNum / $secondNum);
                     break;
                 }
                 ?>На ноль делить нельзя!<?php

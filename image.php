@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/array.php';
+$list = [1 => 'clarinet.jpg', 2 => 'sax.jpg', 3 => 'trombone.jpg', 4 => 'trumpet.jpg'];
 $file = $_GET['id'];
 ?>
 
